@@ -8,16 +8,27 @@ namespace Biblioteket
 {
     class Bibliotek
     {
-        string biblioteksNavn;
+        string _biblioteksNavn;
 
-        public Bibliotek(string navn)
+        public Bibliotek(string biblioteksNavn)
         {
-            this.biblioteksNavn = navn;
+            _biblioteksNavn = biblioteksNavn;
         }
 
         public string HentBibliotek()
         {
-            return $"Velkommen til {biblioteksNavn} datoen idag er: {DateTime.Now}";
+            return $"Velkommen til {_biblioteksNavn} - datoen idag er: {DateTime.Now}";
+        }
+
+        public Laaner OpretLaaner(int laanerNummer, string navn)
+        {
+            Laaner laaner = new(laanerNummer, navn);
+            return laaner;
+        }
+
+        public string HentLaaner(int laanerNummer, string navn)
+        {
+            return $"Lånernummer: {laanerNummer} - Navn: {navn} er låner hos {_biblioteksNavn}";
         }
     }
 }
