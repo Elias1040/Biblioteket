@@ -31,11 +31,23 @@ namespace Biblioteket
 
         public string HentLaaner(int laanerNummer, string navn, string email)
         {
-            for (int i = 0; i < _laanere.Count; i++)
+            foreach (Laaner laaner in _laanere)
             {
-                if (laanerNummer == _laanere[i].LaanerNummer && navn == _laanere[i].Navn && email == _laanere[i].Email)
+                if (laanerNummer == laaner.LaanerNummer && navn == laaner.Navn && email == laaner.Email)
                 {
-                    return $"Lånernummer: {laanerNummer} - {email} Navn: {navn} er låner hos {_biblioteksNavn}";
+                    return $"Lånernummer: {laaner.LaanerNummer} - Email: {laaner.Email} - Navn: {laaner.Navn} er låner hos {_biblioteksNavn}";
+                }
+            }
+            return "Låner eksisterer ikke";
+        }
+
+        public string FindLaaner(int laanerNummer)
+        {
+            foreach (Laaner laaner in _laanere)
+            {
+                if (laanerNummer == laaner.LaanerNummer)
+                {
+                    return $"Lånernummer: {laaner.LaanerNummer} - Navn: {laaner.Navn} - Email: {laaner.Email}";
                 }
             }
             return "Låner eksisterer ikke";

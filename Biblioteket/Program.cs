@@ -9,7 +9,7 @@ bool exit = false;
 do
 {
     Console.Clear();
-    Console.WriteLine("Du kan vælge følgende: \nv: Vis bibliotekets navn og dato \no: Opret låner \nu: Udskriv lånere \nx: afslut");
+    Console.WriteLine("Du kan vælge følgende: \nv: Vis bibliotekets navn og dato \no: Opret låner \nu: Udskriv lånere \nf: Find låner \nx: afslut");
     switch (Console.ReadKey().KeyChar)
     {
         case 'v':
@@ -28,6 +28,11 @@ do
         case 'u':
             Console.Clear();
             Console.WriteLine(bibliotek.HentAlleLaanere());
+            Console.ReadKey();
+            break;
+        case 'f':
+            Console.Clear();
+            Console.WriteLine(bibliotek.FindLaaner(Validation.InputCheckI()));
             Console.ReadKey();
             break;
         case 'x':
