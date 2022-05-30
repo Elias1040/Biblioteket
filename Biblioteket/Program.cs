@@ -9,7 +9,7 @@ bool exit = false;
 do
 {
     Console.Clear();
-    Console.WriteLine("Du kan vælge følgende: \nv: Vis bibliotekets navn og dato \no: Opret låner \nu: Udskriv lånere \nf: Find låner \nx: afslut");
+    Console.WriteLine("Du kan vælge følgende: \nv: Vis bibliotekets navn og dato \no: Opret låner \nu: Udskriv lånere \nf: Find låner \nl: Lån bog \nb: Udskriv bøger \nx: afslut");
     switch (Console.ReadKey().KeyChar)
     {
         case 'v':
@@ -33,6 +33,21 @@ do
         case 'f':
             Console.Clear();
             Console.WriteLine(bibliotek.FindLaaner(Validation.InputCheckI()));
+            Console.ReadKey();
+            break;
+        case 'l':
+            Console.Clear();
+            laanerNummer = Validation.InputCheckI();
+            string titel = Validation.InputCheckS("Titel:");
+            string forfatter = Validation.InputCheckS("Forfatter:");
+            string isbn = Validation.InputCheckS("Isbn:");
+            Bog bog = new(titel, forfatter, isbn);
+            Console.WriteLine(bibliotek.LaanBog(laanerNummer, bog));
+            Console.ReadKey();
+            break;
+        case 'b':
+            Console.Clear();
+            Console.WriteLine(bibliotek.UdskrivBoeger(Validation.InputCheckI()));
             Console.ReadKey();
             break;
         case 'x':

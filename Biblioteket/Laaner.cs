@@ -9,13 +9,16 @@ namespace Biblioteket
     public class Laaner : Person
     {
         int _laanerNummer;
+        List<Bog> _boeger;
         public int LaanerNummer { get { return _laanerNummer;} }
+        public List<Bog> Boeger { get { return _boeger; } }
 
         public Laaner(int laanerNummer, string navn, string email)
         {
             _laanerNummer = laanerNummer;
             _navn = navn;
             _email = email;
+            _boeger = new();
         }
     }
 }

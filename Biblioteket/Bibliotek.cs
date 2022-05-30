@@ -62,5 +62,33 @@ namespace Biblioteket
             }
             return alleLaanere;
         }
+
+        public string LaanBog(int laanerNummer, Bog bog)
+        {
+            for (int i = 0; i < _laanere.Count; i++)
+            {
+                if (laanerNummer == _laanere[i].LaanerNummer)
+                {
+                    _laanere[i].Boeger.Add(bog);
+                }
+            }
+            return $"Titel: {bog.Titel} er lånt - {bog.Udlaansdato.ToShortDateString()}";
+        }
+
+        public string UdskrivBoeger(int laanerNummer)
+        {
+            string boeger = string.Empty;
+            foreach (Laaner laaner in _laanere)
+            {
+                if (laanerNummer == laaner.LaanerNummer)
+                {
+                    foreach (Bog bog in laaner.Boeger)
+                    {
+                        boeger += $"Titel\tForfatter\tUdlånsdato\n{bog.Titel}\t{bog.Forfatter}\t{bog.Udlaansdato.ToShortDateString()}\n";
+                    }
+                }
+            }
+            return boeger;
+        }
     }
 }
