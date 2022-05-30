@@ -8,19 +8,13 @@ namespace Biblioteket
 {
     public class Laaner
     {
-        int _laanerNummer;
-        string _navn;
-
-        public int LaanerNummer { get { return _laanerNummer; } }
-        public string Navn { get { return _navn; } }
+        public int _laanerNummer;
+        public string _navn;
 
         public Laaner(int laanerNummer, string navn)
         {
             _laanerNummer = laanerNummer;
             _navn = navn;
         }
-
-
-
     }
 }

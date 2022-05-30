@@ -1,42 +1,39 @@
 ﻿using Biblioteket;
 
-Console.WriteLine("Bibliotek:");
-Bibliotek bibliotek = new Bibliotek(Console.ReadLine());
-Console.WriteLine(bibliotek.HentBibliotek());
-List<Laaner> list = new List<Laaner>();
-list.Add(new(1, "Elias"));
-list.Add(new(2, "Kevin"));
-list.Add(new(3, "Lucas"));
+Bibliotek bibliotek = new Bibliotek(Validation.InputCheckS("Bibliotek:"));
+bibliotek.OpretLaaner(1, "Elias");
+bibliotek.OpretLaaner(2, "Kevin");
+bibliotek.OpretLaaner(3, "Lucas");
 
-bool _failed = false;
+bool exit = false;
 do
 {
-    try
+    Console.Clear();
+    Console.WriteLine("Du kan vælge følgende: \nv: Vis bibliotekets navn og dato \no: Opret låner \nu: Udskriv lånere \nx: afslut");
+    switch (Console.ReadKey().KeyChar)
     {
-        Console.WriteLine("Lånenummer:");
-        int _laanerNummer;
-        int.TryParse(Console.ReadLine(), out _laanerNummer);
-        Console.WriteLine("Navn:");
-        string _navn = Console.ReadLine();
-        Console.WriteLine(bibliotek.OpretLaaner(_laanerNummer, _navn));
+        case 'v':
+            Console.Clear();
+            Console.WriteLine(bibliotek.HentBibliotek());
+            Console.ReadKey();
+            break;
+        case 'o':
+            Console.Clear();
+            int laanerNummer = Validation.InputCheckI();
+            string navn =  Validation.InputCheckS("Navn:");
+            Console.WriteLine(bibliotek.OpretLaaner(laanerNummer, navn));
+            Console.ReadKey();
+            break;
+        case 'u':
+            Console.Clear();
+            Console.WriteLine(bibliotek.HentAlleLaanere());
+            Console.ReadKey();
+            break;
+        case 'x':
+            exit = true;
+            break;
     }
-    catch (NullReferenceException)
-    {
-        Console.WriteLine("Prøv igen");
-        _failed = true;
-    }
-} while (_failed);
-try
-{
-    Console.WriteLine("Lånenummer:");
-    int _laanerNummer;
-    int.TryParse(Console.ReadLine(), out _laanerNummer);
-    Console.WriteLine("Navn:");
-    string _navn = Console.ReadLine();
-    Console.WriteLine(bibliotek.HentLaaner(_laanerNummer, "a"));
-}
-catch (NullReferenceException)
-{
-    Console.WriteLine("Låner eksistrere ikke");
-}
+} while (!exit);
+
+
 

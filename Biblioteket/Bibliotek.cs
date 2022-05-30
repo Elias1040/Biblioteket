@@ -26,14 +26,14 @@ namespace Biblioteket
         {
             Laaner laaner = new(laanerNummer, navn);
             _laanere.Add(laaner);
-            return $"Låner oprettet med id: {laaner.LaanerNummer} og navn: {laaner.Navn}";
+            return $"Låner oprettet med id: {laaner._laanerNummer} og navn: {laaner._navn}";
         }
 
         public string HentLaaner(int laanerNummer, string navn)
         {
             for (int i = 0; i < _laanere.Count; i++)
             {
-                if (laanerNummer == _laanere[i].LaanerNummer)
+                if (laanerNummer == _laanere[i]._laanerNummer)
                 {
                     return $"Lånernummer: {laanerNummer} - Navn: {navn} er låner hos {_biblioteksNavn}";
                 }
@@ -43,12 +43,12 @@ namespace Biblioteket
 
         public string HentAlleLaanere()
         {
-            string _alleLaanere = string.Empty;
+            string alleLaanere = string.Empty;
             foreach (Laaner laaner in _laanere)
             {
-                _alleLaanere += laaner.Navn + "\n";
+                alleLaanere += laaner._navn + "\n";
             }
-            return _alleLaanere;
+            return alleLaanere;
         }
     }
 }
