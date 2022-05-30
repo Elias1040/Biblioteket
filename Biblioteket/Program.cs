@@ -1,6 +1,6 @@
 ﻿using Biblioteket;
 
-Console.WriteLine("Bibliotek");
+Console.WriteLine("Bibliotek:");
 Bibliotek bibliotek = new Bibliotek(Console.ReadLine());
 Console.WriteLine(bibliotek.HentBibliotek());
 List<Laaner> list = new List<Laaner>();
