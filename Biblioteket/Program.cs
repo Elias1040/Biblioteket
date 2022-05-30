@@ -4,9 +4,9 @@ Console.WriteLine("Bibliotek:");
 Bibliotek bibliotek = new Bibliotek(Console.ReadLine());
 Console.WriteLine(bibliotek.HentBibliotek());
 List<Laaner> list = new List<Laaner>();
-list.Add(new(0, "Elias"));
-list.Add(new(1, "Kevin"));
-list.Add(new(2, "Lucas"));
+list.Add(new(1, "Elias"));
+list.Add(new(2, "Kevin"));
+list.Add(new(3, "Lucas"));
 
 bool _failed = false;
 do
