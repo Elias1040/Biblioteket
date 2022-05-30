@@ -1,9 +1,9 @@
 ﻿using Biblioteket;
 
 Bibliotek bibliotek = new Bibliotek(Validation.InputCheckS("Bibliotek:"));
-bibliotek.OpretLaaner(1, "Elias");
-bibliotek.OpretLaaner(2, "Kevin");
-bibliotek.OpretLaaner(3, "Lucas");
+bibliotek.OpretLaaner(1, "Elias", "Elias@gmail.com");
+bibliotek.OpretLaaner(2, "Kevin", "Kevin@gmail.com");
+bibliotek.OpretLaaner(3, "Lucas", "Lucas@gmail.com");
 
 bool exit = false;
 do
@@ -21,7 +21,8 @@ do
             Console.Clear();
             int laanerNummer = Validation.InputCheckI();
             string navn =  Validation.InputCheckS("Navn:");
-            Console.WriteLine(bibliotek.OpretLaaner(laanerNummer, navn));
+            string email =  Validation.InputCheckS("Email:");
+            Console.WriteLine(bibliotek.OpretLaaner(laanerNummer, navn, email));
             Console.ReadKey();
             break;
         case 'u':

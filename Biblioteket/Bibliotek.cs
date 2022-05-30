@@ -22,20 +22,20 @@ namespace Biblioteket
             return $"Velkommen til {_biblioteksNavn} - datoen idag er: {DateTime.Now.ToShortDateString()}";
         }
 
-        public string OpretLaaner(int laanerNummer, string navn)
+        public string OpretLaaner(int laanerNummer, string navn, string email)
         {
-            Laaner laaner = new(laanerNummer, navn);
+            Laaner laaner = new(laanerNummer, navn, email);
             _laanere.Add(laaner);
-            return $"Låner oprettet med id: {laaner._laanerNummer} og navn: {laaner._navn}";
+            return $"Låner oprettet med id: {laaner.LaanerNummer}, navn: {laaner.Navn} og email: {laaner.Email}";
         }
 
-        public string HentLaaner(int laanerNummer, string navn)
+        public string HentLaaner(int laanerNummer, string navn, string email)
         {
             for (int i = 0; i < _laanere.Count; i++)
             {
-                if (laanerNummer == _laanere[i]._laanerNummer)
+                if (laanerNummer == _laanere[i].LaanerNummer && navn == _laanere[i].Navn && email == _laanere[i].Email)
                 {
-                    return $"Lånernummer: {laanerNummer} - Navn: {navn} er låner hos {_biblioteksNavn}";
+                    return $"Lånernummer: {laanerNummer} - {email} Navn: {navn} er låner hos {_biblioteksNavn}";
                 }
             }
             return "Låner eksisterer ikke";
@@ -46,7 +46,7 @@ namespace Biblioteket
             string alleLaanere = string.Empty;
             foreach (Laaner laaner in _laanere)
             {
-                alleLaanere += laaner._navn + "\n";
+                alleLaanere += laaner.Navn + "\n";
             }
             return alleLaanere;
         }
