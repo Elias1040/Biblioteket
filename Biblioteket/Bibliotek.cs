@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteket
 {
-    class Bibliotek
+    public class Bibliotek
     {
         string _biblioteksNavn;
 
@@ -17,7 +17,7 @@ namespace Biblioteket
 
         public string HentBibliotek()
         {
-            return $"Velkommen til {_biblioteksNavn} - datoen idag er: {DateTime.Now}";
+            return $"Velkommen til {_biblioteksNavn} - datoen idag er: {DateTime.Now.ToShortDateString()}";
         }
 
         public Laaner OpretLaaner(int laanerNummer, string navn)
