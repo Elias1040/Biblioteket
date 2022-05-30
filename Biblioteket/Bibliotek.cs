@@ -29,6 +29,7 @@ namespace Biblioteket
             return $"Låner oprettet med id: {laaner.LaanerNummer}, navn: {laaner.Navn} og email: {laaner.Email}";
         }
 
+        // Henter laaner ud fra laaneNummer, navn og email
         public string HentLaaner(int laanerNummer, string navn, string email)
         {
             foreach (Laaner laaner in _laanere)
@@ -41,6 +42,7 @@ namespace Biblioteket
             return "Låner eksisterer ikke";
         }
 
+        // Finder laaner ud fra lånernummeret
         public string FindLaaner(int laanerNummer)
         {
             foreach (Laaner laaner in _laanere)
@@ -63,6 +65,7 @@ namespace Biblioteket
             return alleLaanere;
         }
 
+        // Tilføjer et bog objekt til laaners bogliste 
         public string LaanBog(int laanerNummer, Bog bog)
         {
             for (int i = 0; i < _laanere.Count; i++)
@@ -75,6 +78,7 @@ namespace Biblioteket
             return $"Titel: {bog.Titel} er lånt - {bog.Udlaansdato.ToShortDateString()}";
         }
 
+        // Udskriver alle lånte bøger ud fra lannerNummer
         public string UdskrivBoeger(int laanerNummer)
         {
             string boeger = string.Empty;

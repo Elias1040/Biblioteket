@@ -8,6 +8,7 @@ namespace Biblioteket
 {
     public static class Validation
     {
+        // Bruger TryParse til validere værdier
         public static int InputCheckI()
         {
             int laanerNummer;
@@ -24,6 +25,7 @@ namespace Biblioteket
             return laanerNummer;
         }
 
+        // Validere om det er en tom string
         public static string InputCheckS(string type)
         {
             string value = string.Empty;
