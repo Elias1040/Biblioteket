@@ -88,7 +88,10 @@ namespace Biblioteket
                     }
                 }
             }
-            return boeger;
+            if (boeger == string.Empty)
+                return "Der er ingen lånte bøger";
+            else
+                return boeger;
         }
     }
 }
